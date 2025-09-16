@@ -1,14 +1,19 @@
 import asyncio
+import os
+from dotenv import load_dotenv
 from browser_use import Agent, Browser
 from browser_use.llm import ChatOpenAI  # or Gemini, Ollama, etc.
 import json
+
+# Load environment variables from .env file
+load_dotenv()
 
 async def main():
     # 1. Start the browser
     browser = Browser(headless=False)
     
     # 2. Choose the LLM backend (here: OpenAI GPT-4o, but you can swap)
-    llm = ChatOpenAI(model="gpt-4o", api_key="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")
+    llm = ChatOpenAI(model="gpt-4o", api_key=os.getenv("OPENAI_API_KEY"))
     
     # 3. Create an agent that ties LLM + browser together
     agent = Agent(
