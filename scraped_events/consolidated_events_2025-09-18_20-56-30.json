@@ -1,0 +1,883 @@
+{
+  "scraping_metadata": {
+    "scraping_timestamp": "2025-09-18T20:54:51.862349",
+    "completion_timestamp": "2025-09-18T20:56:30.540406",
+    "total_websites_targeted": 20,
+    "successful_scrapes": 15,
+    "failed_scrapes": 5,
+    "total_events_found": 83,
+    "average_events_per_successful_site": 5.53,
+    "openai_key_configured": false
+  },
+  "website_scraping_results": [
+    {
+      "website": "geektime_co_il",
+      "url": "https://www.geektime.co.il/event/",
+      "status": "success",
+      "events_count": 17
+    },
+    {
+      "website": "excel_london",
+      "url": "https://www.excel.london/",
+      "status": "success",
+      "events_count": 7
+    },
+    {
+      "website": "techuk_org",
+      "url": "https://www.techuk.org/what-we-deliver/events.html?location=London",
+      "status": "success",
+      "events_count": 8
+    },
+    {
+      "website": "testsmarter_com",
+      "url": "https://testsmarter.com/events/",
+      "status": "failed_to_fetch",
+      "events_count": 0
+    },
+    {
+      "website": "internationalconferencealerts_com",
+      "url": "https://internationalconferencealerts.com/argentina/artificial-intelligence",
+      "status": "success",
+      "events_count": 15
+    },
+    {
+      "website": "lastartup_co_il",
+      "url": "https://www.lastartup.co.il/events/",
+      "status": "success",
+      "events_count": 18
+    },
+    {
+      "website": "10times_com",
+      "url": "https://10times.com/japan/technology",
+      "status": "failed_to_fetch",
+      "events_count": 0
+    },
+    {
+      "website": "barcelona_aitinkerers_org",
+      "url": "https://barcelona.aitinkerers.org/",
+      "status": "success",
+      "events_count": 1
+    },
+    {
+      "website": "sf_aitinkerers_org",
+      "url": "https://sf.aitinkerers.org/",
+      "status": "success",
+      "events_count": 1
+    },
+    {
+      "website": "nyc_aitinkerers_org",
+      "url": "https://nyc.aitinkerers.org/",
+      "status": "success",
+      "events_count": 1
+    },
+    {
+      "website": "miami_aitinkerers_org",
+      "url": "https://miami.aitinkerers.org/",
+      "status": "success",
+      "events_count": 1
+    },
+    {
+      "website": "tokyo_aitinkerers_org",
+      "url": "https://tokyo.aitinkerers.org/",
+      "status": "success",
+      "events_count": 1
+    },
+    {
+      "website": "london_aitinkerers_org",
+      "url": "https://london.aitinkerers.org/",
+      "status": "success",
+      "events_count": 1
+    },
+    {
+      "website": "madrid_aitinkerers_org",
+      "url": "https://madrid.aitinkerers.org/",
+      "status": "success",
+      "events_count": 1
+    },
+    {
+      "website": "buenos_aires_aitinkerers_org",
+      "url": "https://buenos-aires.aitinkerers.org/",
+      "status": "success",
+      "events_count": 1
+    },
+    {
+      "website": "tlv_aitinkerers_org",
+      "url": "https://tlv.aitinkerers.org/",
+      "status": "success",
+      "events_count": 4
+    },
+    {
+      "website": "10times_com",
+      "url": "https://10times.com/argentina/technology",
+      "status": "failed_to_fetch",
+      "events_count": 0
+    },
+    {
+      "website": "10times_com",
+      "url": "https://10times.com/spain/technology/workshops",
+      "status": "failed_to_fetch",
+      "events_count": 0
+    },
+    {
+      "website": "geektime_co_il",
+      "url": "https://www.geektime.co.il/events/",
+      "status": "success",
+      "events_count": 6
+    },
+    {
+      "website": "developer_microsoft_com",
+      "url": "https://developer.microsoft.com/reactor/",
+      "status": "no_events_found",
+      "events_count": 0
+    }
+  ],
+  "consolidated_events": [
+    {
+      "title": "Google Maps & GoGIS in person Event in Tel Aviv",
+      "date_time": "4נובמבר",
+      "location": "person Event in Tel Aviv",
+      "event_url": "https://gkt.me/46mkGcz",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "Vibe 2025 – כנס הפיתוח החדש של גיקטיים",
+      "date_time": "19נובמבר",
+      "location": "הבימה, תל-אביב",
+      "event_url": "https://x.com/geektimecoil?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "Summary not available"
+    },
+    {
+      "title": "Learning Programming with ChatGPT",
+      "date_time": "30ספטמבר",
+      "location": "Online",
+      "event_url": "https://www.meetup.com/lifemichael/events/308886402/",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "This online meetup is dedicated to students who want to leverage ChatGPT as a powerful tool for learning programming. Whether you're just starting out or already taking cod"
+    },
+    {
+      "title": "Rethinking Cyber Defense in the Era of AI",
+      "date_time": "27אוקטובר",
+      "location": "Vקריה האקדמית אונו, באודיטוריום ע\"ש שוליך. חניה ללא עלות במגרשי החניה הסמוכים לקריה האקדמית",
+      "event_url": "https://bit.ly/CYBER_AI_27-10-25",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "The InvestEvent, 28.10.25 – Private meeting for funding",
+      "date_time": "28אוקטובר",
+      "location": "כפר סבא",
+      "event_url": "https://www.okconnectu.com/connect/investevent",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "We invite you to our exclusive private meetings, where we'll work with each startup one-on-one to tailor different funding options and strategically connect you to the capital your venture needs."
+    },
+    {
+      "title": "Israel Mobile Summit 2025",
+      "date_time": "29אוקטובר",
+      "location": "אקספו תל אביב",
+      "event_url": "https://www.facebook.com/events/1301868114042043",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "ספיד נטוורקינג ויין עושים עסקים יחד! 29.10.25 בת\"א",
+      "date_time": "29אוקטובר",
+      "location": "הארבעה 12 תל אביב",
+      "event_url": "https://tinyurl.com/5bk4nxwa",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "XtremeJ 2025 Online Conferences",
+      "date_time": "4נובמבר",
+      "location": "Online",
+      "event_url": "https://xtremej.dev",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "מיניסקריפט ותכנות בביטקוין",
+      "date_time": "5נובמבר",
+      "location": "שגרירות הביטקוין, אחוזת בית 1, תל אביב",
+      "event_url": "https://x.com/BitcoinemBassy",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "IsraelClouds Summit 2025",
+      "date_time": "5נובמבר",
+      "location": "Zoom",
+      "event_url": "https://www.israelcloudsummit.com/",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "Building Your AWS Foundations for International Expansion",
+      "date_time": "6נובמבר",
+      "location": "https://www.eventbrite.com/e/building-your-aws-foundations-for-international-expansion-tickets-16159",
+      "event_url": "https://www.eventbrite.com/e/building-your-aws-foundations-for-international-expansion-tickets-1615991717729?aff=GEEK",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "XtremeJS 2025 Online Conference",
+      "date_time": "11נובמבר",
+      "location": "Online",
+      "event_url": "https://xtremejs.dev",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "ITech Excellence Day 2025 – המקום שבו טכנולוגיה ועסקים נפגשים",
+      "date_time": "11נובמבר",
+      "location": "מרכז הבמה בגני תקווה",
+      "event_url": "https://bit.ly/excday_11-11-25",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "זמן שווה AI – ניהול חכם של העסק, בפורום היועצים! 13.11.25, ב- 10:00",
+      "date_time": "13נובמבר",
+      "location": "רמת גן",
+      "event_url": "https://tinyurl.com/5xr67eym",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "XtremePython 2025 Online Conference",
+      "date_time": "18נובמבר",
+      "location": "Online",
+      "event_url": "https://xtremepython.dev",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "ICI Meeting 2025: Celebrating 30 Years of Innovation in Cardiovascular Interventions and Beyond",
+      "date_time": "7דצמבר",
+      "location": "David InterContinental Hotel 12 Kaufman Street Tel Aviv, Israel",
+      "event_url": "https://icimed.org/",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "URAV 2025",
+      "date_time": "15פברואר",
+      "location": "בנייני האומה ירושלים",
+      "event_url": "https://gkt.me/4jopBzf",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/event/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "The FRIENDS™ Experience",
+      "date_time": "2024-08-12",
+      "location": "The",
+      "event_url": "https://www.excel.london/",
+      "source_website": "excel_london",
+      "source_url": "https://www.excel.london/",
+      "summary": "Plan a stress-free journey, see what events are on, search for places to eat at the venue and browse through hand-picked entertainment and attractions in London."
+    },
+    {
+      "title": "The FRIENDS™ Experience",
+      "date_time": "2024-08-12",
+      "location": "London, UK",
+      "event_url": "https://www.excel.london/",
+      "source_website": "excel_london",
+      "source_url": "https://www.excel.london/",
+      "summary": "Plan a stress-free journey, see what events are on, search for places to eat at the venue and browse through hand-picked entertainment and attractions in London."
+    },
+    {
+      "title": "SQUID GAME: THE EXPERIENCE",
+      "date_time": "2025-05-26",
+      "location": "London, UK",
+      "event_url": "https://www.excel.london/",
+      "source_website": "excel_london",
+      "source_url": "https://www.excel.london/",
+      "summary": "Plan a stress-free journey, see what events are on, search for places to eat at the venue and browse through hand-picked entertainment and attractions in London."
+    },
+    {
+      "title": "Elvis Evolution",
+      "date_time": "2025-07-18",
+      "location": "London, UK",
+      "event_url": "https://www.excel.london/",
+      "source_website": "excel_london",
+      "source_url": "https://www.excel.london/",
+      "summary": "Plan a stress-free journey, see what events are on, search for places to eat at the venue and browse through hand-picked entertainment and attractions in London."
+    },
+    {
+      "title": "Big London Tattoo Show 2025",
+      "date_time": "2025-09-19",
+      "location": "London, UK",
+      "event_url": "https://www.excel.london/",
+      "source_website": "excel_london",
+      "source_url": "https://www.excel.london/",
+      "summary": "Plan a stress-free journey, see what events are on, search for places to eat at the venue and browse through hand-picked entertainment and attractions in London."
+    },
+    {
+      "title": "London Homebuilding & Renovating Show",
+      "date_time": "2025-09-19",
+      "location": "London, UK",
+      "event_url": "https://www.excel.london/",
+      "source_website": "excel_london",
+      "source_url": "https://www.excel.london/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "Turf Games London Fittest in the City",
+      "date_time": "2025-09-20",
+      "location": "The",
+      "event_url": "https://www.excel.london/",
+      "source_website": "excel_london",
+      "source_url": "https://www.excel.london/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "Digital Maturity Gap in Education - Stakeholder Gathering",
+      "date_time": "22 September 2025",
+      "location": "London",
+      "event_url": "https://www.techuk.org/what-we-deliver/events/digital-maturity-gap-in-education-stakeholder-gathering.html",
+      "source_website": "techuk_org",
+      "source_url": "https://www.techuk.org/what-we-deliver/events.html?location=London",
+      "summary": "To make the most of your techUK website experience, pleaselogin or register for your free account here."
+    },
+    {
+      "title": "DigiGov Expo 2025",
+      "date_time": "24 – 25 September 2025",
+      "location": "London",
+      "event_url": "https://www.techuk.org/what-we-deliver/events/digigov-expo-2025.html",
+      "source_website": "techuk_org",
+      "source_url": "https://www.techuk.org/what-we-deliver/events.html?location=London",
+      "summary": "To make the most of your techUK website experience, pleaselogin or register for your free account here."
+    },
+    {
+      "title": "Inside the AI Content Store: Updates and feedback session for techUK members",
+      "date_time": "25 September 2025",
+      "location": "London",
+      "event_url": "https://www.techuk.org/what-we-deliver/events/inside-the-ai-content-store-updates-and-feedback-session-for-techuk-members.html",
+      "source_website": "techuk_org",
+      "source_url": "https://www.techuk.org/what-we-deliver/events.html?location=London",
+      "summary": "To make the most of your techUK website experience, pleaselogin or register for your free account here."
+    },
+    {
+      "title": "Roundtable with the NHS London Procurement Partnership on Developing its Flexible AI Framework",
+      "date_time": "25 September 2025",
+      "location": "London",
+      "event_url": "https://www.techuk.org/what-we-deliver/events/roundtable-with-the-nhs-london-procurement-partnership-on-developing-its-flexible-ai-framework.html",
+      "source_website": "techuk_org",
+      "source_url": "https://www.techuk.org/what-we-deliver/events.html?location=London",
+      "summary": "To make the most of your techUK website experience, pleaselogin or register for your free account here."
+    },
+    {
+      "title": "Resilience Conference 2025",
+      "date_time": "29 – 30 September 2025",
+      "location": "London",
+      "event_url": "https://www.techuk.org/what-we-deliver/events/resilience-conference-2025.html",
+      "source_website": "techuk_org",
+      "source_url": "https://www.techuk.org/what-we-deliver/events.html?location=London",
+      "summary": "To make the most of your techUK website experience, pleaselogin or register for your free account here."
+    },
+    {
+      "title": "ADS & techUK Pavilion: International Cyber Expo 2025",
+      "date_time": "30 September – 1 October 2025",
+      "location": "London",
+      "event_url": "https://www.techuk.org/what-we-deliver/events/ads-techuk-pavilion-international-cyber-expo-2025.html",
+      "source_website": "techuk_org",
+      "source_url": "https://www.techuk.org/what-we-deliver/events.html?location=London",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "Innovations in Private Networks Roundtable: Sectoral Use Cases & Technology Integration",
+      "date_time": "30 September 2025",
+      "location": "London",
+      "event_url": "https://www.techuk.org/what-we-deliver/events/innovations-in-private-networks-roundtable-sectoral-use-cases-technology-integration.html",
+      "source_website": "techuk_org",
+      "source_url": "https://www.techuk.org/what-we-deliver/events.html?location=London",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "techUK Health and Care Summit 2025",
+      "date_time": "2 October 2025",
+      "location": "London",
+      "event_url": "https://www.techuk.org/what-we-deliver/events/techuk-health-and-care-summit-2025.html",
+      "source_website": "techuk_org",
+      "source_url": "https://www.techuk.org/what-we-deliver/events.html?location=London",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "My\n                Preference",
+      "date_time": "TBD",
+      "location": "the My Preference",
+      "event_url": "https://internationalconferencealerts.com/my-preferences",
+      "source_website": "internationalconferencealerts_com",
+      "source_url": "https://internationalconferencealerts.com/argentina/artificial-intelligence",
+      "summary": "Summary not available"
+    },
+    {
+      "title": "My\n                Preference",
+      "date_time": "TBD",
+      "location": "the My Preference",
+      "event_url": "https://internationalconferencealerts.com/my-preferences",
+      "source_website": "internationalconferencealerts_com",
+      "source_url": "https://internationalconferencealerts.com/argentina/artificial-intelligence",
+      "summary": "Summary not available"
+    },
+    {
+      "title": "My\n                Preference",
+      "date_time": "TBD",
+      "location": "the My Preference",
+      "event_url": "https://internationalconferencealerts.com/my-preferences",
+      "source_website": "internationalconferencealerts_com",
+      "source_url": "https://internationalconferencealerts.com/argentina/artificial-intelligence",
+      "summary": "Summary not available"
+    },
+    {
+      "title": "My\n                Preference",
+      "date_time": "TBD",
+      "location": "the My Preference",
+      "event_url": "https://internationalconferencealerts.com/my-preferences",
+      "source_website": "internationalconferencealerts_com",
+      "source_url": "https://internationalconferencealerts.com/argentina/artificial-intelligence",
+      "summary": "Summary not available"
+    },
+    {
+      "title": "My\n                Preference",
+      "date_time": "TBD",
+      "location": "the My Preference",
+      "event_url": "https://internationalconferencealerts.com/my-preferences",
+      "source_website": "internationalconferencealerts_com",
+      "source_url": "https://internationalconferencealerts.com/argentina/artificial-intelligence",
+      "summary": "Summary not available"
+    },
+    {
+      "title": "My\n                Preference",
+      "date_time": "TBD",
+      "location": "the My Preference",
+      "event_url": "https://internationalconferencealerts.com/my-preferences",
+      "source_website": "internationalconferencealerts_com",
+      "source_url": "https://internationalconferencealerts.com/argentina/artificial-intelligence",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "My\n                Preference",
+      "date_time": "TBD",
+      "location": "the My Preference",
+      "event_url": "https://internationalconferencealerts.com/my-preferences",
+      "source_website": "internationalconferencealerts_com",
+      "source_url": "https://internationalconferencealerts.com/argentina/artificial-intelligence",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "My\n                Preference",
+      "date_time": "TBD",
+      "location": "the My Preference",
+      "event_url": "https://internationalconferencealerts.com/my-preferences",
+      "source_website": "internationalconferencealerts_com",
+      "source_url": "https://internationalconferencealerts.com/argentina/artificial-intelligence",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "My\n                Preference",
+      "date_time": "TBD",
+      "location": "the My Preference",
+      "event_url": "https://internationalconferencealerts.com/my-preferences",
+      "source_website": "internationalconferencealerts_com",
+      "source_url": "https://internationalconferencealerts.com/argentina/artificial-intelligence",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "My\n                Preference",
+      "date_time": "TBD",
+      "location": "the My Preference",
+      "event_url": "https://internationalconferencealerts.com/my-preferences",
+      "source_website": "internationalconferencealerts_com",
+      "source_url": "https://internationalconferencealerts.com/argentina/artificial-intelligence",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "My\n                Preference",
+      "date_time": "TBD",
+      "location": "the My Preference",
+      "event_url": "https://internationalconferencealerts.com/my-preferences",
+      "source_website": "internationalconferencealerts_com",
+      "source_url": "https://internationalconferencealerts.com/argentina/artificial-intelligence",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "My\n                Preference",
+      "date_time": "TBD",
+      "location": "the My Preference",
+      "event_url": "https://internationalconferencealerts.com/my-preferences",
+      "source_website": "internationalconferencealerts_com",
+      "source_url": "https://internationalconferencealerts.com/argentina/artificial-intelligence",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "My\n                Preference",
+      "date_time": "TBD",
+      "location": "the My Preference",
+      "event_url": "https://internationalconferencealerts.com/my-preferences",
+      "source_website": "internationalconferencealerts_com",
+      "source_url": "https://internationalconferencealerts.com/argentina/artificial-intelligence",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "My\n                Preference",
+      "date_time": "TBD",
+      "location": "the My Preference",
+      "event_url": "https://internationalconferencealerts.com/my-preferences",
+      "source_website": "internationalconferencealerts_com",
+      "source_url": "https://internationalconferencealerts.com/argentina/artificial-intelligence",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "My\n                Preference",
+      "date_time": "TBD",
+      "location": "the My Preference",
+      "event_url": "https://internationalconferencealerts.com/my-preferences",
+      "source_website": "internationalconferencealerts_com",
+      "source_url": "https://internationalconferencealerts.com/argentina/artificial-intelligence",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "FinTech-Aviv September Event 2025",
+      "date_time": "יום חמישי, 18 בספטמבר, 10:00",
+      "location": "Israel",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "מאגר כל האירועים והמיטאפים בהייטק הישראלי. המאגר מתחדש מידי יום וכולל אירועים לסטארט-אפים, מתכנתים, מעצבים אנשים מוצר, מיטאפים טכנולוגיים, תחרויות סטארט-אפים ועוד."
+    },
+    {
+      "title": "Sept 18th (virtual): FoodTech- Future Forward©",
+      "date_time": "יום חמישי, 18 בספטמבר, 16:00",
+      "location": "Israel",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "מאגר כל האירועים והמיטאפים בהייטק הישראלי. המאגר מתחדש מידי יום וכולל אירועים לסטארט-אפים, מתכנתים, מעצבים אנשים מוצר, מיטאפים טכנולוגיים, תחרויות סטארט-אפים ועוד."
+    },
+    {
+      "title": "How to Build a Side Hustle with AI in One Weekend",
+      "date_time": "יום חמישי, 18 בספטמבר, 05:00",
+      "location": "One",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "מאגר כל האירועים והמיטאפים בהייטק הישראלי. המאגר מתחדש מידי יום וכולל אירועים לסטארט-אפים, מתכנתים, מעצבים אנשים מוצר, מיטאפים טכנולוגיים, תחרויות סטארט-אפים ועוד."
+    },
+    {
+      "title": "ThirdThursdayNetworking: Global Virtual Career Networking Event",
+      "date_time": "יום חמישי, 18 בספטמבר, 16:00",
+      "location": "Israel",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "מאגר כל האירועים והמיטאפים בהייטק הישראלי. המאגר מתחדש מידי יום וכולל אירועים לסטארט-אפים, מתכנתים, מעצבים אנשים מוצר, מיטאפים טכנולוגיים, תחרויות סטארט-אפים ועוד."
+    },
+    {
+      "title": "מיטאפ מפתחים בקריית מלאכי - Practical AI",
+      "date_time": "יום חמישי, 18 בספטמבר, 19:30",
+      "location": "Israel",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "מאגר כל האירועים והמיטאפים בהייטק הישראלי. המאגר מתחדש מידי יום וכולל אירועים לסטארט-אפים, מתכנתים, מעצבים אנשים מוצר, מיטאפים טכנולוגיים, תחרויות סטארט-אפים ועוד."
+    },
+    {
+      "title": "המסע אל הגשמת חלומות - מבפנים החוצה",
+      "date_time": "יום חמישי, 18 בספטמבר, 17:00",
+      "location": "Israel",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "Celebrating Pride: LGBTWORK at the Dutch Ambassador's Residence",
+      "date_time": "יום חמישי, 18 בספטמבר, 18:30",
+      "location": "the Dutch Ambassador",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "TAMI Sonic (Music Night)",
+      "date_time": "יום חמישי, 18 בספטמבר, 19:00",
+      "location": "Israel",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "Devlev meetup #2",
+      "date_time": "יום חמישי, 18 בספטמבר, 19:00",
+      "location": "Israel",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "FinTech-Aviv September Event 2025",
+      "date_time": "18ספטמבר",
+      "location": "Israel",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "Sept 18th (virtual): FoodTech- Future Forward©",
+      "date_time": "18ספטמבר",
+      "location": "Israel",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "המסע אל הגשמת חלומות - מבפנים החוצה",
+      "date_time": "18ספטמבר",
+      "location": "Israel",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "How to Build a Side Hustle with AI in One Weekend",
+      "date_time": "18ספטמבר",
+      "location": "One",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "ThirdThursdayNetworking: Global Virtual Career Networking Event",
+      "date_time": "18ספטמבר",
+      "location": "Israel",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "מיטאפ מפתחים בקריית מלאכי - Practical AI",
+      "date_time": "18ספטמבר",
+      "location": "Israel",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "Celebrating Pride: LGBTWORK at the Dutch Ambassador's Residence",
+      "date_time": "18ספטמבר",
+      "location": "the Dutch Ambassador",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "TAMI Sonic (Music Night)",
+      "date_time": "18ספטמבר",
+      "location": "Israel",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "Devlev meetup #2",
+      "date_time": "18ספטמבר",
+      "location": "Israel",
+      "event_url": "https://www.lastartup.co.il/events/",
+      "source_website": "lastartup_co_il",
+      "source_url": "https://www.lastartup.co.il/events/",
+      "summary": "Event details available on the website"
+    },
+    {
+      "title": "Enter the 4-digit verification code sent to your email",
+      "date_time": "TBD",
+      "location": "Submit",
+      "event_url": "https://barcelona.aitinkerers.org/",
+      "source_website": "barcelona_aitinkerers_org",
+      "source_url": "https://barcelona.aitinkerers.org/",
+      "summary": "AI Tinkerers - Barcelona - Sign up for emails about upcoming meetups - 3 posts"
+    },
+    {
+      "title": "Enter the 4-digit verification code sent to your email",
+      "date_time": "TBD",
+      "location": "Submit",
+      "event_url": "https://sf.aitinkerers.org/",
+      "source_website": "sf_aitinkerers_org",
+      "source_url": "https://sf.aitinkerers.org/",
+      "summary": "AI Tinkerers - San Francisco - - 30 posts"
+    },
+    {
+      "title": "Enter the 4-digit verification code sent to your email",
+      "date_time": "TBD",
+      "location": "Submit",
+      "event_url": "https://nyc.aitinkerers.org/",
+      "source_website": "nyc_aitinkerers_org",
+      "source_url": "https://nyc.aitinkerers.org/",
+      "summary": "AI Tinkerers - New York City - Get updates and be the first to know when we launch events in NYC - 64 posts"
+    },
+    {
+      "title": "Enter the 4-digit verification code sent to your email",
+      "date_time": "TBD",
+      "location": "Submit",
+      "event_url": "https://miami.aitinkerers.org/",
+      "source_website": "miami_aitinkerers_org",
+      "source_url": "https://miami.aitinkerers.org/",
+      "summary": "AI Tinkerers - Miami - Sign up for emails about upcoming meetups - 5 posts"
+    },
+    {
+      "title": "Enter the 4-digit verification code sent to your email",
+      "date_time": "TBD",
+      "location": "Submit",
+      "event_url": "https://tokyo.aitinkerers.org/",
+      "source_website": "tokyo_aitinkerers_org",
+      "source_url": "https://tokyo.aitinkerers.org/",
+      "summary": "AI Tinkerers - Tokyo - Sign up for emails about upcoming meetups - 1 post"
+    },
+    {
+      "title": "Enter the 4-digit verification code sent to your email",
+      "date_time": "TBD",
+      "location": "Submit",
+      "event_url": "https://london.aitinkerers.org/",
+      "source_website": "london_aitinkerers_org",
+      "source_url": "https://london.aitinkerers.org/",
+      "summary": "AI Tinkerers - London - Sign up for emails about upcoming meetups - 32 posts"
+    },
+    {
+      "title": "Enter the 4-digit verification code sent to your email",
+      "date_time": "TBD",
+      "location": "Submit",
+      "event_url": "https://madrid.aitinkerers.org/",
+      "source_website": "madrid_aitinkerers_org",
+      "source_url": "https://madrid.aitinkerers.org/",
+      "summary": "AI Tinkerers - Madrid - Sign up for emails about upcoming meetups - 3 posts"
+    },
+    {
+      "title": "Enter the 4-digit verification code sent to your email",
+      "date_time": "TBD",
+      "location": "Submit",
+      "event_url": "https://buenos-aires.aitinkerers.org/",
+      "source_website": "buenos_aires_aitinkerers_org",
+      "source_url": "https://buenos-aires.aitinkerers.org/",
+      "summary": "AI Tinkerers - Buenos Aires - Sign up for emails about upcoming meetups - 0 posts"
+    },
+    {
+      "title": "Welcome",
+      "date_time": "April 29, 2023",
+      "location": "Attend",
+      "event_url": "https://aitinkerers.org",
+      "source_website": "tlv_aitinkerers_org",
+      "source_url": "https://tlv.aitinkerers.org/",
+      "summary": "🤖 AI Tinkerers: The Builders’ Network We are the world’s most curated AI builder network. In 100+ cities, we bring together engineers, founders, and researchers who ship with foundation models and gen"
+    },
+    {
+      "title": "Enter the 4-digit verification code sent to your email",
+      "date_time": "TBD",
+      "location": "Submit",
+      "event_url": "https://tlv.aitinkerers.org/",
+      "source_website": "tlv_aitinkerers_org",
+      "source_url": "https://tlv.aitinkerers.org/",
+      "summary": "🤖 AI Tinkerers: The Builders’ Network We are the world’s most curated AI builder network. In 100+ cities, we bring together engineers, founders, and researchers who ship with foundation models and gen"
+    },
+    {
+      "title": "Subscribe to\nAI Tinkerers",
+      "date_time": "TBD",
+      "location": "Tel Aviv, Israel",
+      "event_url": "https://tlv.aitinkerers.org/",
+      "source_website": "tlv_aitinkerers_org",
+      "source_url": "https://tlv.aitinkerers.org/",
+      "summary": "🤖 AI Tinkerers: The Builders’ Network We are the world’s most curated AI builder network. In 100+ cities, we bring together engineers, founders, and researchers who ship with foundation models and gen"
+    },
+    {
+      "title": "Ready for more?",
+      "date_time": "TBD",
+      "location": "Check out other posts from this blog.",
+      "event_url": "https://tlv.aitinkerers.org/",
+      "source_website": "tlv_aitinkerers_org",
+      "source_url": "https://tlv.aitinkerers.org/",
+      "summary": "🤖 AI Tinkerers: The Builders’ Network We are the world’s most curated AI builder network. In 100+ cities, we bring together engineers, founders, and researchers who ship with foundation models and gen"
+    },
+    {
+      "title": "הגיק ממליץ: אירועים בשבוע הקרוב שלא כדאי לפספס [01 עד ה-07 בנובמבר 2015]",
+      "date_time": "31.10.15",
+      "location": "Israel, Technology",
+      "event_url": "https://www.geektime.co.il/category/events/",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/events/",
+      "summary": "כל הוובינרים, כנסים בהייטק, וועידות הייטק, כל הטכנולוגיה, האירועים התחרויות וההאקתונים בהייטק הישראלי. ולא חסר בלי עין הרע."
+    },
+    {
+      "title": "Learning Programming with ChatGPT",
+      "date_time": "30ספטמבר",
+      "location": "11:00-12:00Online",
+      "event_url": "https://www.geektime.co.il/event#accordion-553181",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/events/",
+      "summary": "כל הוובינרים, כנסים בהייטק, וועידות הייטק, כל הטכנולוגיה, האירועים התחרויות וההאקתונים בהייטק הישראלי. ולא חסר בלי עין הרע."
+    },
+    {
+      "title": "Rethinking Cyber Defense in the Era of AI",
+      "date_time": "27אוקטובר",
+      "location": "15:30-18:00Vקריה האקדמית אונו...",
+      "event_url": "https://www.geektime.co.il/event#accordion-555699",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/events/",
+      "summary": "כל הוובינרים, כנסים בהייטק, וועידות הייטק, כל הטכנולוגיה, האירועים התחרויות וההאקתונים בהייטק הישראלי. ולא חסר בלי עין הרע."
+    },
+    {
+      "title": "The InvestEvent, 28.10.25 – Private meeting for funding",
+      "date_time": "28אוקטובר",
+      "location": "11:00-16:00כפר סבא",
+      "event_url": "https://www.geektime.co.il/event#accordion-555952",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/events/",
+      "summary": "כל הוובינרים, כנסים בהייטק, וועידות הייטק, כל הטכנולוגיה, האירועים התחרויות וההאקתונים בהייטק הישראלי. ולא חסר בלי עין הרע."
+    },
+    {
+      "title": "Israel Mobile Summit 2025",
+      "date_time": "29אוקטובר",
+      "location": "08:30-16:30אקספו תל אביב",
+      "event_url": "https://www.geektime.co.il/event#accordion-553991",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/events/",
+      "summary": "כל הוובינרים, כנסים בהייטק, וועידות הייטק, כל הטכנולוגיה, האירועים התחרויות וההאקתונים בהייטק הישראלי. ולא חסר בלי עין הרע."
+    },
+    {
+      "title": "ספיד נטוורקינג ויין עושים עסקים יחד! 29.10.25 בת\"א",
+      "date_time": "29אוקטובר",
+      "location": "17:30-19:30הארבעה 12 תל אביב",
+      "event_url": "https://www.geektime.co.il/event#accordion-555835",
+      "source_website": "geektime_co_il",
+      "source_url": "https://www.geektime.co.il/events/",
+      "summary": "Event details available on the website"
+    }
+  ]
+}

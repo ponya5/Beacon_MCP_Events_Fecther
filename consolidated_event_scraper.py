@@ -8,6 +8,7 @@ import asyncio
 import aiohttp
 import json
 import os
+import re
 from datetime import datetime
 from bs4 import BeautifulSoup
 import logging
@@ -177,8 +178,20 @@ class ConsolidatedEventScraper:
         
         # Extract other fields
         date_time = self.extract_date_time(element) or 'TBD'
-        location = self.extract_location(element) or 'TBD'
+        location = self.extract_location(element)
         event_url = self.extract_event_url(element, base_url)
+        
+        # If no location found, try URL-based inference
+        if not location:
+            location = self._infer_location_from_url(base_url, website_name)
+        
+        # If still no location, try extracting from title
+        if not location:
+            location = self._extract_location_from_title(title)
+        
+        # Default fallback
+        if not location:
+            location = 'TBD'
         
         return {
             'title': title.strip()[:200],
@@ -189,6 +202,118 @@ class ConsolidatedEventScraper:
             'source_url': base_url,
             'summary': ''  # Will be filled later
         }
+    
+    def _infer_location_from_url(self, url: str, website_name: str) -> Optional[str]:
+        """Infer location from URL patterns and website context"""
+        url_lower = url.lower()
+        
+        # City-specific AI Tinkerers domains
+        city_domains = {
+            'barcelona.aitinkerers.org': 'Barcelona, Spain',
+            'sf.aitinkerers.org': 'San Francisco, CA',
+            'nyc.aitinkerers.org': 'New York City, NY',
+            'miami.aitinkerers.org': 'Miami, FL',
+            'tokyo.aitinkerers.org': 'Tokyo, Japan',
+            'london.aitinkerers.org': 'London, UK',
+            'madrid.aitinkerers.org': 'Madrid, Spain',
+            'buenos-aires.aitinkerers.org': 'Buenos Aires, Argentina',
+            'tlv.aitinkerers.org': 'Tel Aviv, Israel'
+        }
+        
+        # Check for exact domain matches
+        parsed_url = urlparse(url)
+        domain = parsed_url.netloc.lower()
+        if domain in city_domains:
+            return city_domains[domain]
+        
+        # Country/region specific sites
+        country_patterns = {
+            r'\.co\.il|israel': 'Israel',
+            r'\.london|london': 'London, UK',
+            r'\.co\.uk|techuk': 'United Kingdom',
+            r'argentina|\.ar': 'Argentina',
+            r'spain|\.es': 'Spain',
+            r'japan|\.jp': 'Japan',
+            r'excel\.london': 'London, UK'
+        }
+        
+        for pattern, location in country_patterns.items():
+            if re.search(pattern, url_lower):
+                return location
+        
+        # URL path-based inference
+        path_patterns = [
+            (r'/london|location=london', 'London, UK'),
+            (r'/argentina', 'Argentina'),
+            (r'/spain', 'Spain'),
+            (r'/japan', 'Japan'),
+            (r'/tel-?aviv|/tlv', 'Tel Aviv, Israel'),
+            (r'/new-?york|/nyc', 'New York, NY'),
+            (r'/san-?francisco|/sf', 'San Francisco, CA'),
+            (r'/miami', 'Miami, FL'),
+            (r'/madrid', 'Madrid, Spain'),
+            (r'/barcelona', 'Barcelona, Spain'),
+            (r'/buenos-?aires', 'Buenos Aires, Argentina'),
+            (r'/tokyo', 'Tokyo, Japan')
+        ]
+        
+        for pattern, location in path_patterns:
+            if re.search(pattern, url_lower):
+                return location
+        
+        return None
+    
+    def _extract_location_from_title(self, title: str) -> Optional[str]:
+        """Extract location information from event title"""
+        if not title:
+            return None
+        
+        # Common location patterns in titles
+        title_location_patterns = [
+            r'\b(?:in|at)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\b',  # "in London", "at New York"
+            r'\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+(?:Event|Conference|Meetup|Summit)\b',  # "London Event"
+            r'\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+\d{4}\b',  # "London 2025"
+            r'(?:^|\s)([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s*[-–—]\s*',  # "London - Event"
+            r'(?:^|\s)([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s*:\s*',  # "London: Event"
+        ]
+        
+        for pattern in title_location_patterns:
+            matches = re.findall(pattern, title)
+            for match in matches:
+                if self._is_likely_city_name(match):
+                    return self._clean_location(match)
+        
+        return None
+    
+    def _is_likely_city_name(self, text: str) -> bool:
+        """Check if text is likely a city name"""
+        if not text or len(text) < 3:
+            return False
+        
+        # Known cities and countries
+        known_locations = {
+            'london', 'paris', 'berlin', 'madrid', 'barcelona', 'rome', 'amsterdam',
+            'new york', 'san francisco', 'los angeles', 'chicago', 'boston', 'miami',
+            'toronto', 'vancouver', 'montreal', 'sydney', 'melbourne', 'tokyo',
+            'tel aviv', 'jerusalem', 'haifa', 'buenos aires', 'sao paulo', 'mexico city',
+            'singapore', 'hong kong', 'seoul', 'mumbai', 'delhi', 'bangalore',
+            'dubai', 'abu dhabi', 'cairo', 'johannesburg', 'cape town',
+            'israel', 'uk', 'usa', 'canada', 'australia', 'japan', 'spain',
+            'france', 'germany', 'italy', 'argentina', 'brazil', 'india'
+        }
+        
+        text_lower = text.lower()
+        if text_lower in known_locations:
+            return True
+        
+        # Check if it looks like a city name (capitalized, reasonable length)
+        if (text[0].isupper() and
+                len(text) >= 3 and
+                len(text) <= 30 and
+                text.replace(' ', '').isalpha()):
+            return True
+        
+        return False
     
     def extract_title(self, element) -> Optional[str]:
         """Extract event title using multiple strategies"""
@@ -232,17 +357,196 @@ class ConsolidatedEventScraper:
         return None
     
     def extract_location(self, element) -> Optional[str]:
-        """Extract event location"""
+        """Extract event location using enhanced multi-strategy approach"""
+        # Strategy 1: Enhanced CSS selectors
         location_selectors = [
-            '.location', '.venue', '.place', '.where',
-            '[class*="location"]', '[class*="venue"]', '[class*="place"]',
-            '.event-location', '.event-venue'
+            # Primary location selectors
+            '.location', '.venue', '.place', '.where', '.address',
+            '.event-location', '.event-venue', '.event-place', '.event-address',
+            '.venue-name', '.venue-address', '.location-name',
+            
+            # Semantic selectors
+            '[class*="location"]', '[class*="venue"]', '[class*="place"]', 
+            '[class*="address"]', '[class*="city"]', '[class*="country"]',
+            '[data-location]', '[data-venue]', '[data-address]',
+            
+            # Common patterns
+            '.info .location', '.details .location', '.meta .location',
+            '.event-info .location', '.event-details .venue',
+            '.card-location', '.item-location', '.post-location',
+            
+            # Icon-based selectors (often location info follows location icons)
+            '.fa-map-marker + *', '.fa-location + *', '.icon-location + *',
+            '.location-icon + *', '.map-icon + *',
+            
+            # Alternative text patterns
+            '.where-text', '.venue-text', '.location-text', '.address-text'
         ]
         
         for selector in location_selectors:
-            loc_elem = element.select_one(selector)
-            if loc_elem and loc_elem.get_text(strip=True):
-                return loc_elem.get_text(strip=True).replace('\n', ' ').strip()
+            try:
+                loc_elem = element.select_one(selector)
+                if loc_elem and loc_elem.get_text(strip=True):
+                    location = loc_elem.get_text(strip=True).replace('\n', ' ').strip()
+                    if self._is_valid_location(location):
+                        return self._clean_location(location)
+            except Exception:
+                continue
+        
+        # Strategy 2: Structured data extraction (JSON-LD, microdata)
+        location = self._extract_structured_location(element)
+        if location:
+            return location
+        
+        # Strategy 3: Text pattern matching
+        location = self._extract_location_from_text(element)
+        if location:
+            return location
+        
+        # Strategy 4: Attribute-based extraction
+        location = self._extract_location_from_attributes(element)
+        if location:
+            return location
+        
+        return None
+    
+    def _is_valid_location(self, location: str) -> bool:
+        """Validate if extracted text is likely a location"""
+        if not location or len(location.strip()) < 2:
+            return False
+        
+        # Filter out common non-location texts
+        invalid_patterns = [
+            r'^(more|details|info|read more|click here|register|book now)$',
+            r'^(yes|no|true|false|null|undefined)$',
+            r'^[\d\s\-\+\(\)]+$',  # Only numbers/symbols
+            r'^[^\w\s]+$',  # Only special characters
+            r'^(am|pm|est|pst|cet|utc|gmt)$',  # Time zones only
+            r'^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)$',  # Month names only
+        ]
+        
+        location_lower = location.lower().strip()
+        for pattern in invalid_patterns:
+            if re.match(pattern, location_lower):
+                return False
+        
+        return True
+    
+    def _clean_location(self, location: str) -> str:
+        """Clean and standardize location text"""
+        # Remove extra whitespace and normalize
+        location = ' '.join(location.split())
+        
+        # Remove common prefixes/suffixes
+        prefixes_to_remove = ['location:', 'venue:', 'where:', 'at:', 'in:', '@']
+        for prefix in prefixes_to_remove:
+            if location.lower().startswith(prefix):
+                location = location[len(prefix):].strip()
+        
+        # Remove trailing punctuation except important ones
+        location = re.sub(r'[,;]+$', '', location)
+        
+        # Capitalize properly
+        if location.islower() or location.isupper():
+            location = location.title()
+        
+        return location[:100]  # Reasonable length limit
+    
+    def _extract_structured_location(self, element) -> Optional[str]:
+        """Extract location from structured data (JSON-LD, microdata)"""
+        # Look for JSON-LD structured data
+        json_ld_scripts = element.find_all('script', {'type': 'application/ld+json'})
+        for script in json_ld_scripts:
+            try:
+                data = json.loads(script.string)
+                location = self._extract_location_from_json_ld(data)
+                if location:
+                    return location
+            except (json.JSONDecodeError, AttributeError):
+                continue
+        
+        # Look for microdata
+        location_microdata = element.find(attrs={'itemprop': ['location', 'address', 'venue']})
+        if location_microdata:
+            text = location_microdata.get_text(strip=True)
+            if self._is_valid_location(text):
+                return self._clean_location(text)
+        
+        return None
+    
+    def _extract_location_from_json_ld(self, data) -> Optional[str]:
+        """Extract location from JSON-LD structured data"""
+        if isinstance(data, list):
+            for item in data:
+                location = self._extract_location_from_json_ld(item)
+                if location:
+                    return location
+        elif isinstance(data, dict):
+            # Check for location field
+            if 'location' in data:
+                location_data = data['location']
+                if isinstance(location_data, str):
+                    return self._clean_location(location_data)
+                elif isinstance(location_data, dict):
+                    # Try common location sub-fields
+                    for field in ['name', 'address', 'addressLocality', 'addressRegion']:
+                        if field in location_data and isinstance(location_data[field], str):
+                            return self._clean_location(location_data[field])
+            
+            # Check for address field
+            if 'address' in data:
+                address_data = data['address']
+                if isinstance(address_data, str):
+                    return self._clean_location(address_data)
+                elif isinstance(address_data, dict):
+                    # Build address from components
+                    address_parts = []
+                    for field in ['streetAddress', 'addressLocality', 'addressRegion', 'addressCountry']:
+                        if field in address_data and isinstance(address_data[field], str):
+                            address_parts.append(address_data[field])
+                    if address_parts:
+                        return self._clean_location(', '.join(address_parts))
+        
+        return None
+    
+    def _extract_location_from_text(self, element) -> Optional[str]:
+        """Extract location using text pattern matching"""
+        text = element.get_text()
+        
+        # Common location patterns
+        location_patterns = [
+            r'(?:location|venue|where|at|in):\s*([^,\n\r]+)',
+            r'(?:held at|taking place at|hosted at)\s+([^,\n\r]+)',
+            r'(?:📍|🏢|🌍|📌)\s*([^,\n\r]+)',  # Location emojis
+            r'(?:Address|Venue|Location):\s*([^\n\r]+)',
+            r'(?:City|Country):\s*([^,\n\r]+)',
+            r'\b(?:in|at)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*(?:,\s*[A-Z][a-z]+)*)\b',  # "in London" or "at New York"
+        ]
+        
+        for pattern in location_patterns:
+            matches = re.findall(pattern, text, re.IGNORECASE)
+            for match in matches:
+                if self._is_valid_location(match):
+                    return self._clean_location(match)
+        
+        return None
+    
+    def _extract_location_from_attributes(self, element) -> Optional[str]:
+        """Extract location from HTML attributes"""
+        # Check data attributes
+        data_attrs = ['data-location', 'data-venue', 'data-address', 'data-city', 'data-country']
+        for attr in data_attrs:
+            value = element.get(attr)
+            if value and self._is_valid_location(value):
+                return self._clean_location(value)
+        
+        # Check title attributes that might contain location
+        title = element.get('title', '')
+        if title and ('location' in title.lower() or 'venue' in title.lower()):
+            # Extract location from title like "Event at Location: Details"
+            location_match = re.search(r'(?:at|in)\s+([^:,\n]+)', title, re.IGNORECASE)
+            if location_match and self._is_valid_location(location_match.group(1)):
+                return self._clean_location(location_match.group(1))
         
         return None
     
@@ -258,7 +562,7 @@ class ConsolidatedEventScraper:
         return base_url
     
     async def generate_summary(self, event: Dict) -> str:
-        """Generate event summary by visiting the event URL"""
+        """Generate event summary and enhance location by visiting the event URL"""
         if not event.get('event_url') or event['event_url'] == 'TBD':
             return "Event details available on the website"
         
@@ -268,6 +572,13 @@ class ConsolidatedEventScraper:
                 return "Summary not available"
             
             soup = BeautifulSoup(html, 'html.parser')
+            
+            # Try to enhance location from event page if current location is TBD
+            if event.get('location') == 'TBD':
+                enhanced_location = self._extract_location_from_event_page(soup)
+                if enhanced_location:
+                    event['location'] = enhanced_location
+                    logger.debug(f"Enhanced location for '{event.get('title', 'Unknown')}': {enhanced_location}")
             
             # Try meta description first
             meta_desc = soup.find('meta', attrs={'name': 'description'})
@@ -291,6 +602,86 @@ class ConsolidatedEventScraper:
         except Exception as e:
             logger.debug(f"Error generating summary for {event.get('title', 'Unknown')}: {e}")
             return "Summary not available"
+    
+    def _extract_location_from_event_page(self, soup: BeautifulSoup) -> Optional[str]:
+        """Extract location from individual event page using comprehensive strategies"""
+        # Strategy 1: Try the same enhanced location extraction on the full page
+        page_body = soup.find('body') or soup
+        location = self.extract_location(page_body)
+        if location and location != 'TBD':
+            return location
+        
+        # Strategy 2: Look for specific event page patterns
+        event_page_selectors = [
+            # Event-specific location selectors
+            '.event-venue', '.event-location', '.event-address',
+            '.venue-info', '.location-info', '.address-info',
+            '.event-details .venue', '.event-details .location',
+            '.event-meta .venue', '.event-meta .location',
+            
+            # Common event page structures
+            '.sidebar .venue', '.sidebar .location',
+            '.event-sidebar .venue', '.event-sidebar .location',
+            '.event-content .venue', '.event-content .location',
+            
+            # Schema.org and structured data
+            '[itemtype*="Event"] [itemprop="location"]',
+            '[itemtype*="Place"] [itemprop="name"]',
+            '[itemtype*="PostalAddress"]',
+            
+            # Map and address containers
+            '.map-container', '.address-container', '.venue-container',
+            '.google-map', '.location-map'
+        ]
+        
+        for selector in event_page_selectors:
+            try:
+                elements = soup.select(selector)
+                for element in elements:
+                    text = element.get_text(strip=True)
+                    if text and self._is_valid_location(text) and len(text) > 2:
+                        return self._clean_location(text)
+            except Exception:
+                continue
+        
+        # Strategy 3: Look for location in page title or headings
+        page_title = soup.find('title')
+        if page_title:
+            title_text = page_title.get_text()
+            location = self._extract_location_from_title(title_text)
+            if location:
+                return location
+        
+        # Strategy 4: Search for location patterns in all text content
+        page_text = soup.get_text()
+        location_patterns = [
+            r'(?:venue|location|address|where):\s*([^\n\r,]+)',
+            r'(?:held at|taking place at|hosted at|located at)\s+([^\n\r,]+)',
+            r'(?:📍|🏢|🌍|📌)\s*([^\n\r,]+)',
+            r'(?:Address|Venue|Location):\s*([^\n\r]+)',
+            r'(?:Join us at|Meet us at|Visit us at)\s+([^\n\r,]+)',
+        ]
+        
+        for pattern in location_patterns:
+            matches = re.findall(pattern, page_text, re.IGNORECASE)
+            for match in matches:
+                match = match.strip()
+                if self._is_valid_location(match) and len(match) > 5:
+                    return self._clean_location(match)
+        
+        # Strategy 5: Look for structured data in JSON-LD
+        json_scripts = soup.find_all('script', {'type': 'application/ld+json'})
+        for script in json_scripts:
+            try:
+                if script.string:
+                    data = json.loads(script.string)
+                    location = self._extract_location_from_json_ld(data)
+                    if location:
+                        return location
+            except (json.JSONDecodeError, AttributeError):
+                continue
+        
+        return None
     
     async def scrape_website(self, url: str) -> List[Dict]:
         """Scrape events from a single website"""
@@ -406,12 +797,13 @@ class ConsolidatedEventScraper:
             with open(filename, 'w', encoding='utf-8') as f:
                 json.dump(consolidated_data, f, indent=2, ensure_ascii=False)
             
-            logger.info(f"🎉 Scraping completed successfully!")
-            logger.info(f"📊 Final Results:")
+            logger.info("🎉 Scraping completed successfully!")
+            logger.info("📊 Final Results:")
             logger.info(f"   • Total websites processed: {self.scraping_stats['total_websites']}")
             logger.info(f"   • Successful scrapes: {self.scraping_stats['successful_scrapes']}")
             logger.info(f"   • Total events found: {self.scraping_stats['total_events']}")
-            logger.info(f"   • Average events per site: {consolidated_data['scraping_metadata']['average_events_per_successful_site']}")
+            avg_events = consolidated_data['scraping_metadata']['average_events_per_successful_site']
+            logger.info(f"   • Average events per site: {avg_events}")
             logger.info(f"✅ Consolidated results saved to: {filename}")
             
             return filename
