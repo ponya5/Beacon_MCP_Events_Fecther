@@ -1,5 +1,6 @@
 """
 Basic tests for consolidated_event_scraper.py
+This ensures the CI pipeline can run pytest successfully.
 """
 import pytest
 import sys
