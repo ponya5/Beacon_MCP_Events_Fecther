@@ -29,27 +29,50 @@ jobs:
 
     - name: Install testing tools
       run: |
+        python -m pip install --upgrade pip
         python -m pip install --no-cache-dir pytest pytest-cov coverage
+        echo "Testing tools installation completed"
 
     - name: Verify installations
       run: |
+        echo "=== Python and pip info ==="
         python --version
-        pip list
-        which python
         python -c "import sys; print('Python executable:', sys.executable)"
-        python -c "import flake8; print('flake8 version:', flake8.__version__)"
-        python -c "import pytest; print('pytest version:', pytest.__version__)"
+        pip --version
+        echo ""
+
+        echo "=== Installed packages ==="
+        pip list | grep -E "(flake8|pytest|coverage)"
+        echo ""
+
+        echo "=== Import tests ==="
+        python -c "import flake8; print('✓ flake8 version:', flake8.__version__)"
+        python -c "import pytest; print('✓ pytest version:', pytest.__version__)"
+        python -c "import coverage; print('✓ coverage version:', coverage.__version__)"
+        echo ""
+
+        echo "=== Command tests ==="
         python -m flake8 --version
         python -m pytest --version
+        echo "✓ All tools verified successfully"
 
     - name: Run linting
       run: |
         python -m flake8 consolidated_event_scraper.py --count --select=E9,F63,F7,F82 --show-source --statistics
         python -m flake8 consolidated_event_scraper.py --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
+    - name: Verify pytest availability
+      run: |
+        echo "=== Final pytest verification before running tests ==="
+        python -c "import pytest; print('pytest is available, version:', pytest.__version__)"
+        python -m pytest --version
+        echo "✓ pytest is ready to run tests"
+
     - name: Run tests
       run: |
+        echo "=== Running tests ==="
         python -m pytest --cov=consolidated_event_scraper --cov-report=xml
+        echo "✓ Tests completed successfully"
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
